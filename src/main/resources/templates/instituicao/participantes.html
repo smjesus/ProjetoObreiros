@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="~{modulos/publica-header :: header-section}"></head>
+
+<body>
+
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/publica-nav :: navbar-menu}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex flex-fill align-items-center">
+                <div class="col">
+                    <div class="row mb-3">
+                        <div class="col-sm-12 mb-3 d-flex justify-content-center">
+                            <h2 th:text="|#{institute.user.list}: ${siglaDaInstituicao}.|"></h2>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th th:text="#{form.cpf}"></th>
+                                <th th:text="#{form.name}"></th>
+                                <th th:text="#{form.birthday}"></th>
+                                <th th:text="#{form.email}"></th>
+                                <th th:text="#{admin.editar.papel.usuario.actived}"></th>
+                                <th th:text="#{admin.editar.papel.usuario.roles}"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${usuarios.empty}">
+                                <td colspan="7" th:text="#{institute.user.no}"></td>
+                            </tr>
+                            <tr th:each="usuario : ${usuarios}">
+                                <td><span th:text="${usuario.cpf}"></span></td>
+                                <td><span th:text="${usuario.nomeCompleto}"></span></td>
+                                <td><span th:text="${#dates.format(usuario.dataNascimento, 'dd/MM/yyyy')}"> </span></td>
+                                <td><span th:text="${usuario.email}"></span></td>
+                                <td><span th:text="${usuario.ativo} ? 'ATIVO' : 'DESATIVADO'"></span></td>
+                                <td>
+                                    <th:block th:each="pp : ${usuario.permissoes}">
+                                        <span th:text="${pp.ruleName}"></span><br/>
+                                    </th:block>
+                                </td>
+			
+                            </tr>
+                        </tbody>
+                        <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                            <span th:text="${mensagem}"></span>
+                        </div>  
+                    </table>
+                    <div class="col-12 text-center mx-auto">
+                        <a th:href="@{/instituicao/listar/1}">
+                        <img height="50px" th:src="@{/imagens/voltar.png}"/></a>
+                    </div>
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+            
+        </div>
+        <!-- ROODAPE DA PAGINA -->
+        <div th:insert="~{modulos/publica-footer :: navbar-footer}"></div>
+    </div>
+</body>
+</html>

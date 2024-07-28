@@ -1,0 +1,67 @@
+.form-login {
+    max-width: 600px;
+    padding: 2rem;
+}
+
+.bg, .bg-filter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.bg-filter {
+  z-index: -99;
+  opacity: 0.2;
+  background: -webkit-linear-gradient(rgba(49, 224, 247, 1) 0%, rgba(90, 77, 184, 1) 100%);
+  background: -moz-linear-gradient(rgba(49, 224, 247, 1) 0%, rgba(90, 77, 184, 1) 100%);
+  background: -o-linear-gradient(rgba(49, 224, 247, 1) 0%, rgba(90, 77, 184, 1) 100%);
+  background: linear-gradient(rgba(49, 224, 247, 1) 0%, rgba(90, 77, 184, 1) 100%);
+}
+.intro-text {
+  font-family: "Open Sans";
+  width: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  font-size: 56px;
+  text-transform: uppercase;
+  color: white;
+}
+
+#box{
+    border: 1px solid rgb(200, 200, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgba(200, 200, 200, 0.1);
+    border-radius: 4px;
+    top:50px;
+}
+
+.user_card {
+
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #f39c12;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+.input-group-text {
+    background: #c0392b !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}

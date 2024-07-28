@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="~{modulos/publica-header :: header-section}"></head>
+
+<body>
+
+    <!-- Full Page Device -->
+
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/publica-nav :: navbar-menu}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex flex-fill align-items-center">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12 mb-3 d-flex justify-content-center">
+                                <h2 th:text="#{form.setAddressUser}"></h2>
+                            </div>
+                            <div class="mb-3 alert alert-danger alert-dismissible fade show" th:if="${mensagem}">
+                                <span th:text="${mensagem}">&nbsp;</span>
+                            </div>
+                            <form action="#" th:action="@{/colaborador/endereco}" th:object="${colaborador}" method="post">
+                                <!--  CPF  DO USUARIO   -->
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.cpf}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{cpf}" disabled /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+                                    </div>
+                                </div>
+                                <!--  NOME  DO USUARIO   -->
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.name}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{nome}" disabled /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                                    </div>				
+                                </div>
+                                <!--  SOBRENOME  DO USUARIO   -->
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.surname}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{sobrenome}" disabled /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}"></span>
+                                    </div>				
+                                </div>
+
+                                <!--  ENDERECO  DO USUARIO   -->
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.address.CEP}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control"  type="text" th:field="*{endereco.cep}" id="endereco.cep"  onchange="javascript:atualizaCEP(this);" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('endereco.cep')}" th:errors="*{endereco.cep}"></span>
+                                    </div>				
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.address.ENDERECO}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{endereco.logradouro}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('endereco.logradouro')}" th:errors="*{endereco.logradouro}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.address.NUMERO}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{endereco.numero}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('endereco.numero')}" th:errors="*{endereco.numero}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.address.COMPLEMENTO}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{endereco.complemento}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('endereco.complemento')}" th:errors="*{endereco.complemento}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.address.BAIRRO}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{endereco.bairro}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('endereco.bairro')}" th:errors="*{endereco.bairro}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.address.LOCALIDADE}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{endereco.localidade}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('endereco.localidade')}" th:errors="*{endereco.localidade}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.address.ESTADO}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{endereco.estado}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('endereco.estado')}" th:errors="*{endereco.estado}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.address.IBGE}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{endereco.ibge}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('endereco.ibge')}" th:errors="*{endereco.ibge}"></span>
+                                    </div>				
+                                </div>
+
+                                <!--  CAMPOS HIDDEN  -->
+                                <div class="row mb-3">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" type="hidden" th:field="*{versao}" /> 
+                                        <input class="form-control" type="hidden" th:field="*{colaboradorID}" />
+                                        <input class="form-control" type="hidden" th:field="*{endereco.versao}" /> 
+                                        <input class="form-control" type="hidden" th:field="*{endereco.enderecoID}" />
+                                    </div>
+                                </div>   
+
+                                <div class="row mb-5">
+                                    <div class="col-sm-12 d-flex justify-content-center">
+                                        <input  class="btn btn-primary btn-sm m-1" type="submit" th:value="#{form.update}"/>
+                                        <a th:href="@{/colaborador/listar/1}" class="btn btn-secondary btn-sm m-1" role="button">Cancelar</a>
+                                    </div>
+                                </div>
+                                
+                            </form>	
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+            
+        </div>
+        <!-- ROODAPE DA PAGINA -->
+        <div th:replace="~{modulos/publica-footer :: navbar-footer}"></div>
+    </div>
+
+</body>
+</html>

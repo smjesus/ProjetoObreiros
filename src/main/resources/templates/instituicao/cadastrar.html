@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="~{modulos/publica-header :: header-section}"></head>
+
+<body>
+
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/publica-nav :: navbar-menu}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex flex-fill align-items-center">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12 mb-3 d-flex justify-content-center">
+                                <h2 th:text="#{form.addInstitute}"></h2>
+                            </div>
+                            <div class="mb-3 alert alert-danger alert-dismissible fade show" th:if="${mensagem}">
+                                <span th:text="${mensagem}">&nbsp;</span>
+                            </div>
+
+                            <form action="#" th:action="@{/instituicao/cadastrar}" th:object="${instituicao}" method="post">
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.cnpj}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{cnpj}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}"></span>
+                                    </div>				
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.name}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{nome}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+                                    </div>				
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.sigla}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{sigla}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('sigla')}" th:errors="*{sigla}"></span>
+                                    </div>				
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.telefone}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{telefone}" />
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <span class="mensagem" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.email}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{enderecoEletronico}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('enderecoEletronico')}" th:errors="*{enderecoEletronico}"></span>
+                                    </div>				
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.googleMaps}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{googleMaps}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('googleMaps')}" th:errors="*{googleMaps}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col-sm-12 d-flex justify-content-center">
+                                        <input  class="btn btn-primary btn-sm m-1" type="submit" th:value="#{form.update}"/>
+                                        <a th:href="@{/instituicao/listar/1}" class="btn btn-secondary btn-sm m-1" role="button">Cancelar</a>
+                                    </div>
+                                </div>
+                                
+                            </form>	
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+            
+        </div>
+        <!-- ROODAPE DA PAGINA -->
+        <div th:insert="~{modulos/publica-footer :: navbar-footer}"></div>
+    </div>
+</body>
+</html>

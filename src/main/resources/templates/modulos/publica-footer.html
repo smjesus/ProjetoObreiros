@@ -1,0 +1,29 @@
+<navbar th:fragment="navbar-footer" class="footer navbar-inverse navbar-fixed-bottom">          
+    <div class="copyright">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="copy-text">
+                        <p>&copy; <a href="https://www.obreiros.net.br/sobre/">Obreiros</a> - Todos os Direitos Reservados.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="copy-menu">
+                        <a href="/politica-de-privacidade/">Pol&iacute;tica de Privacidade</a>
+                        Powered by: <a href="https://www.aeroceti.com.br">AeroCETI</a>
+                    </div>
+                </div>
+            </div>
+        </div><!--container-->
+    </div><!--copyright-->
+
+    <script>
+        $(document).ready(function(){
+            $('.navbar-xbootstrap').click(function(){
+              $('.nav-xbootstrap').toggleClass('visible');
+              $('body').toggleClass('cover-bg');
+            });
+          });
+    </script>
+</navbar>
+

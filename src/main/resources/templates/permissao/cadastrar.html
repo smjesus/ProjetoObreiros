@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="~{modulos/publica-header :: header-section}"></head>
+
+<body>
+
+<!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/publica-nav :: navbar-menu}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex flex-fill align-items-center">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12 mb-3 d-flex justify-content-center">
+                                <h2 th:text="#{form.addrules}"></h2>
+                            </div>
+                            <div class="mb-3 alert alert-danger alert-dismissible fade show" th:if="${mensagem}">
+                                <span th:text="${mensagem}">&nbsp;</span>
+                            </div>
+
+                            <form action="#" th:action="@{/permissao/cadastrar}" th:object="${rules}" method="post">
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" th:text="#{form.name}"></label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" th:field="*{ruleName}" /> 
+                                    </div>
+                                    <div class="col-sm-12"> 
+                                        <span class="mensagem" th:if="${#fields.hasErrors('ruleName')}" th:errors="*{ruleName}"></span>
+                                    </div>				
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col-sm-12 d-flex justify-content-center">
+                                        <input  class="btn btn-primary btn-sm m-1" type="submit" th:value="#{form.update}"/>
+                                        <a th:href="@{/permissao/listar/1}" class="btn btn-secondary btn-sm m-1" role="button">Cancelar</a>
+                                    </div>
+                                </div>
+                                
+                            </form>	
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+            
+        </div>
+        <!-- ROODAPE DA PAGINA -->
+        <div th:replace="~{modulos/publica-footer :: navbar-footer}"></div>
+    </div>
+</body>
+</html>

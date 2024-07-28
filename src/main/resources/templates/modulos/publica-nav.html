@@ -1,0 +1,21 @@
+<nav  th:fragment="navbar-menu" >
+    <ul>
+        <li><a href="/" th:text="|&nbsp;&nbsp;#{index.home}&nbsp;&nbsp;|"></a></li>
+        <li>
+            <a href="#" th:text="|&nbsp;&nbsp;#{index.registerMenu}&nbsp;&nbsp;|"></a>
+            <ul class="dropdown">
+                <li><a href="/permissao/listar/1"   th:text="#{index.listRules}"></a></li>
+                <li><a href="/instituicao/listar/1" th:text="#{index.listInstitute}"></a></li>
+                <li><a href="/colaborador/listar/1" th:text="#{index.list}"></a></li>
+            </ul>
+        </li>
+        <li><span>&nbsp;&nbsp;</span></li>
+        <li>
+            <a href="#" th:text="|&nbsp;&nbsp;#{index.lang.menu}&nbsp;&nbsp;|"></a>
+            <ul class="dropdown">
+                <li><a href="/dashboard?locale=en_US"  th:text="#{index.lang.eng}"></a></li>
+                <li><a href="/dashboard?locale=pt_BR"  th:text="#{index.lang.pt}"></a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>

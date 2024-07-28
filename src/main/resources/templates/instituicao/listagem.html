@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="~{modulos/publica-header :: header-section}"></head>
+
+<body>
+
+    <!-- Full Page Device -->
+    <div id="page-container">
+        <!-- CONTEUDO DA PAGINA  -->
+        <div id="content-wrap">
+            <!--  MENU DO SISTEMA  -->
+            <div th:insert="~{modulos/publica-nav :: navbar-menu}"></div>
+            
+            <!--  AREA DO CONTEUDO DINAMICO  -->
+            <section class="d-flex flex-fill align-items-center">
+                <div class="col">
+                    <div class="row mb-3">
+                        <div class="col-1 text-center align-self-center">
+                            <a th:href="@{/instituicao/cadastrar}">
+                            <img height="50px" th:src="@{/imagens/adicionar.png}"/></a>
+                        </div>
+                        <div class="col-11 text-align-left"><br/><h1 th:text="#{institute.list}"></h1><br/></div>
+                    </div>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th th:text="#{form.sigla}"       style="width: 10%;"></th>
+                                <th th:text="#{form.cnpj}"        style="width: 10%;"></th>
+                                <th th:text="#{form.name}"        style="width: 40%;"></th>
+                                <th th:text="#{form.telefone}"    style="width: 20%;"></th>
+                                <th th:text="#{form.email}"       style="width: 20%;"></th>
+                                <th th:text="#{admin.editar.papel.usuario.atributes}" colspan="1" style="text-align: center;"></th>
+                                <th th:text="#{admin.editar.papel.usuario.actions}"   colspan="2" style="text-align: center;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${instituicoes.empty}">
+                                    <td colspan="8" th:text="#{institute.no}"></td>
+                            </tr>
+                            <tr th:each="instituicao : ${instituicoes}">
+                                <td><span th:text="${instituicao.sigla}"></span></td>
+                                <td><span th:text="${instituicao.cnpjFormatado}"></span></td>
+                                <td><span th:text="${instituicao.nome}"></span></td>
+                                <td><span th:text="${instituicao.telefone}"></span></td>
+                                <td><span th:text="${instituicao.enderecoEletronico}"></span></td>
+                                <td class="text-center">
+                                    <a class="btn btn-outline-primary btn-sm" 
+                                       th:href="@{/instituicao/participantes/{id}(id=${instituicao.instituicaoID})}"
+                                       th:text="#{admin.editar.papel.usuario.members}">
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a class="btn btn-outline-primary btn-sm" 
+                                       th:href="@{/instituicao/atualizar/{id}(id=${instituicao.instituicaoID})}"
+                                       th:text="#{admin.editar.papel.usuario.edit}">
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <a class="btn btn-outline-danger btn-sm" 
+                                       th:href="@{/instituicao/remover/{id}(id=${instituicao.instituicaoID})}"
+                                       th:data-confirm-delete="|Você gostaria de apagar ${instituicao.nome}?|"
+                                       onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+                                       th:text="#{admin.listar.usuario.delete}">
+                                    </a>
+                                </td>				
+                            </tr>
+                        </tbody>
+                        <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                            <span th:text="${mensagem}"></span>
+                        </div>                        
+                    </table>    
+                </div>
+            </section>
+            <!--  FIM DO CONTEUDO DINAMICO  -->
+            
+        </div>
+        <!-- ROODAPE DA PAGINA -->
+        <div th:insert="~{modulos/publica-footer :: navbar-footer}"></div>
+    </div>
+</body>
+</html>

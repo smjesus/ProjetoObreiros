@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author"      content="Sergio Murilo" />
+    <meta name="description" content="Sistema de Cadastro de Colaboradores Espiritas - Obreiros do Cristo" />
+    <meta name="viewport"    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"                    crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="" th:href="@{/css/login.css}"                                                       />
+
+    <title>Portal dos Obreiros do Cristo!</title>
+</head>
+    <body class="d-flex align-items-center py-5 h-100">
+    <video autoplay loop poster class="bg" th:src="@{/imagens/login_background.mp4}"></video>      
+    <!-- Top content -->
+    <div class="top-content w-100 m-auto form-login user_card">
+                
+        <img  width="60" th:src="@{/imagens/logo.png}" class="img-responsive align-items-center" alt="Portal Obreiros da Amaz&ocirc;nia"><BR>
+        <span class="text-success align-items-center">Autentica&ccedil;&atilde;o</span>
+        <hr>
+        <form action="#" method="POST">
+            <div class="input-group mb-3">
+                <div class="input-group-append"><span class="input-group-text"><i class="fas fa-user"></i></span></div>
+                <input type="text" name="" class="form-control input_user" value="" placeholder="Seu CPF - somente numeros" tabindex="1">
+            </div>
+            
+            <div class="input-group mb-3">
+                <div class="input-group-append"><span class="input-group-text"><i class="fa fa-user-circle-o"></i></span></div>
+                <input autofocus required type="text" id="cpfNumber" name="cpfNumber" class="form-control input_user" placeholder="Seu CPF - somente numeros" tabindex="1"/>
+            </div>
+
+            <button type="submit" class="btn btn-block btn-success">Autenticar</button>
+        </form>
+    </div>
+</body>
+</html>
