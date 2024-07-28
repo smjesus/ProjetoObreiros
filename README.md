@@ -1,2 +1,5 @@
-# ProjetoObreiros
-Sistema de Cadastro de Participantes de uma instituição
+## Projeto Obreiros
+### Um sistema para integrar os participantes da Seara do Cristo.
+
+Esta versao (branch) contem o CRUD básico do sistema.
+
